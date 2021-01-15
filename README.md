@@ -14,4 +14,5 @@ yarn
 yarn start
 
 Click "Run in web browser" in side panel, to run web app.
-Scan QR in mobile to run in mobile devices. 
+
+Scan QR to run in mobile devices. 
