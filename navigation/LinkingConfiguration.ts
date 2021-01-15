@@ -6,14 +6,19 @@ export default {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          BarChart: {
             screens: {
-              TabOneScreen: 'one',
+              BarChartScreen: 'bar',
             },
           },
-          TabTwo: {
+          LineChart: {
             screens: {
-              TabTwoScreen: 'two',
+              LineChartScreen: 'line',
+            },
+          },
+          PieChart: {
+            screens: {
+              PieChartScreen: 'pie',
             },
           },
         },

@@ -5,9 +5,10 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import BarChartScreen from '../screens/BarChart';
+import LineChartScreen from '../screens/LineChart';
+import PieChartScreen from '../screens/PieChart';
+import { BottomTabParamList, BarChartParamList, LineChartParamList, PieChartParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -16,18 +17,25 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="BarChart"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+        name="BarChart"
+        component={BarChartNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="LineChart"
+        component={LineChartNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="PieChart"
+        component={PieChartNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -44,30 +52,44 @@ function TabBarIcon(props: { name: string; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const BarChartStack = createStackNavigator<BarChartParamList>();
 
-function TabOneNavigator() {
+function BarChartNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <BarChartStack.Navigator>
+      <BarChartStack.Screen
+        name="BarChartScreen"
+        component={BarChartScreen}
+        options={{ headerTitle: 'BarChart' }}
       />
-    </TabOneStack.Navigator>
+    </BarChartStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const LineChartStack = createStackNavigator<LineChartParamList>();
 
-function TabTwoNavigator() {
+function LineChartNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <LineChartStack.Navigator>
+      <LineChartStack.Screen
+        name="LineChartScreen"
+        component={LineChartScreen}
+        options={{ headerTitle: 'LineChart' }}
       />
-    </TabTwoStack.Navigator>
+    </LineChartStack.Navigator>
+  );
+}
+
+const PieChartStack = createStackNavigator<PieChartParamList>();
+
+function PieChartNavigator() {
+  return (
+    <PieChartStack.Navigator>
+      <PieChartStack.Screen
+        name="PieChartScreen"
+        component={PieChartScreen}
+        options={{ headerTitle: 'PieChart' }}
+      />
+    </PieChartStack.Navigator>
   );
 }
